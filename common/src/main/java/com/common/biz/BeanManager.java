@@ -9,6 +9,9 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Spring 容器管理、封装
@@ -27,7 +30,9 @@ public class BeanManager
     {
         BeanData beanData = new BeanData();
         String[] beanNames = ctx.getBeanDefinitionNames();
-        beanData.setList(Arrays.asList(beanNames));
+        List<String> list = Arrays.stream(beanNames).sorted(Comparator.comparingInt(String::length))
+                .collect(Collectors.toList());
+        beanData.setList(list);
         return beanData;
     }
 
