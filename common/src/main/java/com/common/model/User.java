@@ -1,20 +1,22 @@
 package com.common.model;
 
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
 @Data
-public class User
+public class User implements UserDetails
 {
     @Id
     private Integer id;
@@ -44,4 +46,33 @@ public class User
     @JoinTable(name = "user_role", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "role_id")})
     private List<Role> roles;
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities()
+    {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired()
+    {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked()
+    {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired()
+    {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled()
+    {
+        return true;
+    }
 }

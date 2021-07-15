@@ -3,6 +3,9 @@ package com.common.biz;
 import com.common.dao.UserDao;
 import com.common.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +18,7 @@ import java.util.List;
  * @date 2021/7/14 22:46
  */
 @Service
-public class UserBiz
+public class UserBiz implements UserDetailsService
 {
     @Autowired
     private UserDao userDao;
@@ -23,5 +26,11 @@ public class UserBiz
     public List<User> getAll()
     {
         return userDao.findAll();
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException
+    {
+        return userDao.getUserByUsername(s);
     }
 }
