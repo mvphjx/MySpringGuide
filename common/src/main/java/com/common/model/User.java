@@ -37,8 +37,7 @@ public class User
 
     private String remark;
     /**
-     * Hibernate 会自动创建一张关系表stu_cou， 里边有俩字段stu_id和cou_idfen分别为两表主键
-     *
+     * 通过关系表user_role，实现多对多
      * @return
      */
     @ManyToMany(cascade = { CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)

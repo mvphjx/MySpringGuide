@@ -3,8 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="icon" type="image/x-icon" href="/image/logo/中国结.ico"/>
 </head>
 <body>
 <h1>Home Page</h1>
+<p>
+    今天是: <span th:text="${#dates.format(new java.util.Date().getTime(),'yyyy-MM-dd')}">2018-04-25</span>
+</p>
+<h2>Bean Arrys</h2>
+<div th:each="name : ${beanData.list}">
+    <span th:text="${index}"></span>.<span th:text="${name}"></span>
+</div>
 </body>
 </html>
