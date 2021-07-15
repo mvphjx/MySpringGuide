@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
-    <link rel="icon" type="image/x-icon" href="/image/logo/中国结.ico"/>
+    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
-<h1>Home Page</h1>
-<p>
+<div th:insert="~{header :: nav}"></div>
+<div class="container" style="margin-top: 60px"><p>
     今天是: <span th:text="${#dates.format(new java.util.Date().getTime(),'yyyy-MM-dd')}">2018-04-25</span>
 </p>
-<h2>Bean Arrays</h2>
-<div th:each="name : ${beanData.list}">
-    <span th:text="${nameStat.index+1}"></span>.<span th:text="${name}"></span>
-</div>
+    <h2>Bean Arrays</h2>
+    <div th:each="name : ${beanData.list}">
+        <span th:text="${nameStat.index+1}"></span>.<span th:text="${name}"></span>
+    </div></div>
+
 </body>
 </html>
