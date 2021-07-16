@@ -62,11 +62,12 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter
     /**
      * 登录地址为 "/login"，登录成功默认跳转到页面 "/"
      * 退出登录的地址为 "/logout"，退出成功后返回json
+     * 系统监控 /actuator/** 交由basic认证,这里不拦截
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception
     {
-        http.authorizeRequests().antMatchers("/login", "/logout").permitAll();
+        http.authorizeRequests().antMatchers("/login", "/logout","/actuator/**").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.formLogin().loginPage("/login").defaultSuccessUrl("/").and().logout()
                 .logoutSuccessHandler((req, resp, authentication) -> {

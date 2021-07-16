@@ -30,3 +30,13 @@ The following guides illustrate how to use some features concretely:
 * [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
 * [Handling Form Submission](https://spring.io/guides/gs/handling-form-submission/)
 
+####spring-boot-starter-actuator
+1.可以配合Idea Endpoints-Health/Mappings使用
+
+2.接口访问 http://localhost/actuator
+
+3.集成admin http://localhost:8769
+####springfox-swagger-ui
+http://localhost/swagger-ui.html#/
+
+

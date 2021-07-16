@@ -1,5 +1,6 @@
-package com.common;
+package com.admin;
 
+import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -7,12 +8,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author han
  */
 @SpringBootApplication
-public class CommonApplication
+@EnableAdminServer
+public class AdminServerApplication
 {
 
     public static void main(String[] args)
     {
-        SpringApplication.run(CommonApplication.class, args);
+        SpringApplication.run(AdminServerApplication.class, args);
     }
 
 }
