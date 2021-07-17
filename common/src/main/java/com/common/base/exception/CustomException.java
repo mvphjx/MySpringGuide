@@ -1,5 +1,6 @@
 package com.common.base.exception;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
@@ -9,6 +10,7 @@ import lombok.Data;
  * @date 2021/7/11 23:20
  */
 @Data
+@AllArgsConstructor
 public class CustomException extends RuntimeException
 {
     private int code;
