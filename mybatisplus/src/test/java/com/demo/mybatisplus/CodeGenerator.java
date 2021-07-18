@@ -9,14 +9,18 @@ import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
 import com.baomidou.mybatisplus.generator.config.FileOutConfig;
 import com.baomidou.mybatisplus.generator.config.GlobalConfig;
+import com.baomidou.mybatisplus.generator.config.IFileCreate;
 import com.baomidou.mybatisplus.generator.config.PackageConfig;
 import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.TemplateConfig;
+import com.baomidou.mybatisplus.generator.config.builder.ConfigBuilder;
 import com.baomidou.mybatisplus.generator.config.po.TableFill;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
+import com.baomidou.mybatisplus.generator.config.rules.FileType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -108,25 +112,29 @@ public class CodeGenerator
             public String outputFile(TableInfo tableInfo)
             {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                return projectPath + "/src/main/resources/mapper/" + pc.getModuleName() + "/" + tableInfo
+                return projectPath + "/mybatisplus/src/main/resources/mapper/" + pc.getModuleName() + "/" + tableInfo
                         .getEntityName() + "Mapper" + StringPool.DOT_XML;
             }
         });
-        /*
-        cfg.setFileCreate(new IFileCreate() {
-            @Override
-            public boolean isCreate(ConfigBuilder configBuilder, FileType fileType, String filePath) {
-                // 判断自定义文件夹是否需要创建
-                checkDir("调用默认方法创建的目录，自定义目录用");
-                if (fileType == FileType.MAPPER) {
-                    // 已经生成 mapper 文件判断存在，不想重新生成返回 false
-                    return !new File(filePath).exists();
-                }
-                // 允许生成模板文件
-                return true;
-            }
-        });
-        */
+
+//        cfg.setFileCreate(new IFileCreate() {
+//            @Override
+//            public boolean isCreate(ConfigBuilder configBuilder, FileType fileType, String filePath) {
+//                // 判断自定义文件夹是否需要创建
+//                //checkDir("调用默认方法创建的目录，自定义目录用");
+//                if (fileType == FileType.MAPPER) {
+//                    // 已经生成 mapper 文件判断存在，不想重新生成返回 false
+//                    return !new File(filePath).exists();
+//                }
+//                if (fileType == FileType.ENTITY) {
+//                    // 允许生成模板文件
+//                    return true;
+//                }
+//                // 允许生成模板文件
+//                return false;
+//            }
+//        });
+
         cfg.setFileOutConfigList(focList);
         mpg.setCfg(cfg);
 
@@ -152,7 +160,7 @@ public class CodeGenerator
         // 公共父类
         //        strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
         // 写于父类中的公共字段
-        strategy.setSuperEntityColumns("id");
+        //strategy.setSuperEntityColumns("id");
         strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
         strategy.setControllerMappingHyphenStyle(true);
         //逻辑删除

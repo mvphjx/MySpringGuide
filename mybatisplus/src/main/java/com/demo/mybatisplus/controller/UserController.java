@@ -1,5 +1,6 @@
 package com.demo.mybatisplus.controller;
 
+
 import com.demo.mybatisplus.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * 前端控制器
+ *  前端控制器
  * </p>
  *
  * @author han
@@ -17,8 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/mp/user")
-public class UserController
-{
+public class UserController {
     @Autowired
     private UserService userService;
 
@@ -27,5 +27,4 @@ public class UserController
     {
         return userService.list();
     }
-
 }
