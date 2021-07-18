@@ -1,5 +1,9 @@
 # Getting Started
 
+### 业务概述
+- 用户角色管理（springdata）
+- 商品管理（mybatis-plus）
+
 #### spring-boot-starter-actuator
 1.可以配合Idea Endpoints-Health/Mappings使用
 
