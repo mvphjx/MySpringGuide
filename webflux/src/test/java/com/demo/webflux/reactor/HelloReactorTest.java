@@ -1,4 +1,4 @@
-package com.common.reactor;
+package com.demo.webflux.reactor;
 
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
@@ -18,6 +18,14 @@ public class HelloReactorTest
     @Test
     public void Hello(){
         Flux<Integer> numberFlux = Flux.just(1, 2, 3, 4);
+        numberFlux.subscribe(f->System.out.println("Here's some number:"+f));
+    }
+
+    @Test
+    public void from(){
+        Integer[] numbers = {1,2,3,4};
+        // from 数组 迭代器 stream
+        Flux<Integer> numberFlux = Flux.fromArray(numbers);
         numberFlux.subscribe(f->System.out.println("Here's some number:"+f));
     }
 }
