@@ -1,5 +1,27 @@
 # Getting Started
 
+### 业务概述
+- 用户角色管理（springdata）
+- 商品管理（mybatis-plus）
+
+#### spring-boot-starter-actuator
+1.可以配合Idea Endpoints-Health/Mappings使用
+
+2.接口访问 http://localhost/actuator
+
+3.集成admin http://localhost:8769
+#### springfox-swagger-ui
+http://localhost/swagger-ui.html#/
+
+#### springdata
+    关联关系维护：
+    查询，注解配置即可
+    新增/更新，需要结合业务决定是否维护引用的实体。
+
+
+#### mybatis
+
+
 ### Reference Documentation
 For further reference, please consider the following sections:
 
@@ -30,13 +52,7 @@ The following guides illustrate how to use some features concretely:
 * [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
 * [Handling Form Submission](https://spring.io/guides/gs/handling-form-submission/)
 
-####spring-boot-starter-actuator
-1.可以配合Idea Endpoints-Health/Mappings使用
 
-2.接口访问 http://localhost/actuator
 
-3.集成admin http://localhost:8769
-####springfox-swagger-ui
-http://localhost/swagger-ui.html#/
 
 

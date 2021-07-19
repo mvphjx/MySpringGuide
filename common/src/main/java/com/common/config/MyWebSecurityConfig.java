@@ -67,7 +67,7 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter
     @Override
     protected void configure(HttpSecurity http) throws Exception
     {
-        http.authorizeRequests().antMatchers("/login", "/logout","/actuator/**").permitAll();
+        http.authorizeRequests().antMatchers("/login", "/logout","/actuator/**","/report/**").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.formLogin().loginPage("/login").defaultSuccessUrl("/").and().logout()
                 .logoutSuccessHandler((req, resp, authentication) -> {
