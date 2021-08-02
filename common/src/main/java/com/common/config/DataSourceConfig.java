@@ -23,7 +23,7 @@ public class DataSourceConfig {
     public DataSource getDataSource() {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
-        dataSourceBuilder.url("jdbc:mysql://localhost:3306/myspring?allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false");
+        dataSourceBuilder.url("jdbc:mysql://localhost:3306/myspring?allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=false");
         dataSourceBuilder.username("root");
         dataSourceBuilder.password("root");
         return dataSourceBuilder.build();
