@@ -78,6 +78,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.11</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -159,6 +160,15 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+<!--            Failed to execute goal org.apache.maven.plugins:maven-resources-plugin:3.2.0:
+resources (default-resources) on project common:
+Input length = 1 -> [Help 1]-->
+            <!--缺省3.2版本 maven-resources-plugin，install报错，修改成2.7-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
             </plugin>
         </plugins>
     </build>
