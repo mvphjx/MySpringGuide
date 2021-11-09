@@ -47,22 +47,24 @@ public class UserCtrl
     }
 
     /**
-     * @ApiImplicitParam
+     * API接口，增加注解自动生成文档
+     *
+     * @param id
+     * @ApiImplicitParam 适用于简单描述参数
      * paramType : header query path body form
      * dataType:String  Integer
      *
-     * @ApiResponse
+     * @return ResponseResult<User>
+     * @ApiResponse 适用于简单描述参数
+     * @ApiModel+ApiModelProperty适用于复杂对象说明
      * code
      * message
-     *
-     * @param id
-     * @return
      */
     @ApiOperation(value = "获取指定用户2")
     @GetMapping(path = { "/get" })
     @ApiImplicitParams({ @ApiImplicitParam(name = "id", required = true, dataType = "Integer", paramType = "query", value = "ID") })
     @ApiResponses(@ApiResponse(code = 200, message = "data=>User"))
-    public ResponseResult getUser2(Integer id)
+    public ResponseResult<User> getUser2(Integer id)
     {
         User user = userBiz.getById(id);
         return ResponseResult.ok(user);
