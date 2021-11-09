@@ -37,6 +37,11 @@ public class UserBiz implements UserDetailsService
         return userDao.findAll();
     }
 
+    public User getById(Integer id)
+    {
+        return userDao.getById(id);
+    }
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException
     {
@@ -49,7 +54,7 @@ public class UserBiz implements UserDetailsService
      * 2维护引用的实体
      * 结合用户/角色的业务逻辑，只需要维护关联关系，
      * 角色实体交给其他service维护即可
-     *
+     * <p>
      * 新增{用户信息/角色关联信息}
      * 更新{用户信息/角色关联信息}
      *

@@ -5,21 +5,28 @@
 - 商品管理（mybatis-plus）
 
 #### spring-boot-starter-actuator
-1.可以配合Idea Endpoints-Health/Mappings使用
+- 可以配合Idea Endpoints-Health/Mappings使用
 
-2.接口访问 http://localhost/actuator
+- 接口访问 http://localhost/actuator
 
-3.集成admin http://localhost:8769
-#### springfox-swagger-ui
-http://localhost/swagger-ui.html#/
+- 集成admin http://localhost:8769
 
 #### springdata
     关联关系维护：
     查询，注解配置即可
     新增/更新，需要结合业务决定是否维护引用的实体。
 
-
-
+### 在线文档
+#### 特性
+- 代码即文档，自动生成接口文档
+- 在线&离线文档
+- 在线测试
+- 根据项目配置，定制文档
+#### 访问地址
+- springfox-swagger-ui
+http://localhost/swagger-ui.html#/
+- swagger-bootstrap-ui 
+http://localhost/doc.html
 
 
 ### Reference Documentation

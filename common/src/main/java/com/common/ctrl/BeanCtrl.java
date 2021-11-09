@@ -3,6 +3,7 @@ package com.common.ctrl;
 import com.common.base.result.ResponseResult;
 import com.common.biz.BeanManager;
 import com.common.data.BeanData;
+import com.common.data.CommonColumnData;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,13 @@ public class BeanCtrl
     {
         BeanData beanData = beanManager.get();
         return ResponseResult.ok(beanData);
+    }
+
+    @ApiOperation(value = "test")
+    @GetMapping(path = { "/test" })
+    public ResponseResult<CommonColumnData> test()
+    {
+        return ResponseResult.ok();
     }
 
 }

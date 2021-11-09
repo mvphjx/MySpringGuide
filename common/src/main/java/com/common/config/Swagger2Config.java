@@ -1,7 +1,9 @@
 package com.common.config;
 
+import cn.hutool.core.annotation.AnnotationUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
@@ -30,11 +32,9 @@ import java.time.LocalDate;
  */
 @Configuration
 @EnableSwagger2
+@Slf4j
 public class Swagger2Config
 {
-
-    // TODO http://localhost/swagger-ui.html
-
     /**
      * Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化 RESTful 风格的 Web 服务。
      * 总体目标是使客户端和文件系统作为服务器以同样的速度来更新。 文件的方法，参数和模型紧密集成到服务器端的代码，允许API来始终保持同步。
@@ -44,8 +44,15 @@ public class Swagger2Config
     public Docket createRestApi()
     {
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select()
-                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
-                .apis(RequestHandlerSelectors.basePackage("com.common")).paths(PathSelectors.any()).build();
+                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class)).apis(input -> {
+                    //自定义过滤策略
+                    Class<?> aClass = input.declaringClass();
+                    Api annotation = AnnotationUtil.getAnnotation(aClass, Api.class);
+                    log.info("Api:" + annotation);
+                    ApiOperation apiOperation = input.findAnnotation(ApiOperation.class).get();
+                    log.info("ApiOperation:" + apiOperation);
+                    return true;
+                }).apis(RequestHandlerSelectors.basePackage("com.common")).paths(PathSelectors.any()).build();
     }
 
     private ApiInfo apiInfo()

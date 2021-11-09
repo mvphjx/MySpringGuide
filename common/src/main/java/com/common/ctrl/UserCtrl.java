@@ -8,9 +8,14 @@ import com.common.biz.UserBiz;
 import com.common.model.Role;
 import com.common.model.User;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @version 1.0
  * @date 2021/7/15 0:00
  */
-@Api(value = "用户")
+@Api(tags = "用户")
 @RestController
 @RequestMapping("/user")
 public class UserCtrl
@@ -32,6 +37,36 @@ public class UserCtrl
     private UserBiz userBiz;
     @Autowired
     private RoleBiz roleBiz;
+
+    @ApiOperation(value = "获取指定用户")
+    @GetMapping(path = { "/get/{id}" })
+    public ResponseResult getUser1(@PathVariable Integer id)
+    {
+        User user = userBiz.getById(id);
+        return ResponseResult.ok(user);
+    }
+
+    /**
+     * @ApiImplicitParam
+     * paramType : header query path body form
+     * dataType:String  Integer
+     *
+     * @ApiResponse
+     * code
+     * message
+     *
+     * @param id
+     * @return
+     */
+    @ApiOperation(value = "获取指定用户2")
+    @GetMapping(path = { "/get" })
+    @ApiImplicitParams({ @ApiImplicitParam(name = "id", required = true, dataType = "Integer", paramType = "query", value = "ID") })
+    @ApiResponses(@ApiResponse(code = 200, message = "data=>User"))
+    public ResponseResult getUser2(Integer id)
+    {
+        User user = userBiz.getById(id);
+        return ResponseResult.ok(user);
+    }
 
     @ApiOperation(value = "获取全部用户")
     @GetMapping(path = { "", "/" })
