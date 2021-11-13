@@ -8,11 +8,7 @@ import com.common.biz.UserBiz;
 import com.common.model.Role;
 import com.common.model.User;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,30 +37,6 @@ public class UserCtrl
     @ApiOperation(value = "获取指定用户")
     @GetMapping(path = { "/get/{id}" })
     public ResponseResult getUser1(@PathVariable Integer id)
-    {
-        User user = userBiz.getById(id);
-        return ResponseResult.ok(user);
-    }
-
-    /**
-     * API接口，增加注解自动生成文档
-     *
-     * @param id
-     * @ApiImplicitParam 适用于简单描述参数
-     * paramType : header query path body form
-     * dataType:String  Integer
-     *
-     * @return ResponseResult<User>
-     * @ApiResponse 适用于简单描述参数
-     * @ApiModel+ApiModelProperty适用于复杂对象说明
-     * code
-     * message
-     */
-    @ApiOperation(value = "获取指定用户2")
-    @GetMapping(path = { "/get" })
-    @ApiImplicitParams({ @ApiImplicitParam(name = "id", required = true, dataType = "Integer", paramType = "query", value = "ID") })
-    @ApiResponses(@ApiResponse(code = 200, message = "data=>User"))
-    public ResponseResult<User> getUser2(Integer id)
     {
         User user = userBiz.getById(id);
         return ResponseResult.ok(user);
