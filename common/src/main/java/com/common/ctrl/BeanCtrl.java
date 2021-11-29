@@ -3,11 +3,9 @@ package com.common.ctrl;
 import com.common.base.result.ResponseResult;
 import com.common.biz.BeanManager;
 import com.common.data.BeanData;
-import com.common.data.CommonColumnData;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,18 +26,10 @@ public class BeanCtrl
     private BeanManager beanManager;
 
     @ApiOperation(value = "获取全部Bean")
-    @GetMapping(path = { "", "/" })
+    @GetMapping(path = { "",})
     public ResponseResult<BeanData> data()
     {
         BeanData beanData = beanManager.get();
         return ResponseResult.ok(beanData);
     }
-
-    @ApiOperation(value = "test")
-    @GetMapping(path = { "/test" })
-    public ResponseResult<CommonColumnData> test()
-    {
-        return ResponseResult.ok();
-    }
-
 }
