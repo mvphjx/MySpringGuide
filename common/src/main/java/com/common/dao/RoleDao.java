@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
 /**
- * 用户
+ * 角色
  * @author hjx
  * @version 1.0
  * @date 2021/7/14 23:57
