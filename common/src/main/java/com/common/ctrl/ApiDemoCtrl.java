@@ -33,13 +33,13 @@ import java.util.Map;
  * 备注：@example适用于 query path form ；@examples适用于body 但是UI有bug无法展示。
  * 所以针对body参数，不建议使用@example 而应该使用vo对象
  */
-@Api(tags = "API文档Demo")
+@Api(tags = "在线API文档Demo")
 @RestController
 @RequestMapping("/apidemo")
 public class ApiDemoCtrl
 {
     /**
-     * example有效
+     * @ApiParam.example属性 有效
      */
     @ApiOperation(value = "@ApiParamQuery")
     @GetMapping(path = { "/ApiParamQuery" })
@@ -50,7 +50,7 @@ public class ApiDemoCtrl
         return ResponseResult.ok();
     }
     /**
-     * example有效
+     * @ApiImplicitParam.example属性 有效
      */
     @ApiOperation(value = "@ApiImplicitParamQuery")
     @GetMapping(path = { "/ApiImplicitParamQuery" })
@@ -61,7 +61,7 @@ public class ApiDemoCtrl
         return ResponseResult.ok();
     }
     /**
-     * example有效
+     * @ApiModelProperty.example属性 有效
      */
     @ApiOperation(value = "@ApiModelBody")
     @GetMapping(path = { "/ApiModelBody" })
@@ -70,7 +70,7 @@ public class ApiDemoCtrl
         return ResponseResult.ok();
     }
     /**
-     * examples无效
+     * @ApiImplicitParams.examples属性 无效,UI无法解析
      */
     @ApiOperation(value = "@ApiImplicitParamBody")
     @GetMapping(path = { "/ApiImplicitParamBody" })
@@ -80,7 +80,7 @@ public class ApiDemoCtrl
         return ResponseResult.ok();
     }
     /**
-     * examples无效
+     * @ApiParam.examples属性 无效,UI无法解析
      */
     @ApiOperation(value = "@ApiParamBody")
     @GetMapping(path = { "/ApiParamBody" })

@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * 前端展示/视图对象
+ *
  * @author hjx
  * @version 1.0
  * @date 2021/7/11 23:24
@@ -14,5 +15,6 @@ import java.util.List;
 @Data
 public class BeanData
 {
-    private List<String> list = new ArrayList<>();
+    private String name;
+    private String className;
 }

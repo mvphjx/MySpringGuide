@@ -21,7 +21,7 @@ import java.util.Map;
  * @version 1.0
  * @date 2021/7/15 0:00
  */
-@Api(value = "报表数据测试")
+@Api(tags = "报表数据测试")
 @RestController
 @RequestMapping("/report")
 public class ReportCtrl

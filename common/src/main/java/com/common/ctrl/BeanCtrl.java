@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * Bean容器数据展示
  *
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @version 1.0
  * @date 2021/7/11 22:12
  */
-@Api(value = "Bean容器")
+@Api(tags = "Bean容器")
 @RestController
 @RequestMapping("/bean")
 public class BeanCtrl
@@ -26,10 +28,11 @@ public class BeanCtrl
     private BeanManager beanManager;
 
     @ApiOperation(value = "获取全部Bean")
-    @GetMapping(path = { "",})
-    public ResponseResult<BeanData> data()
+    @GetMapping(path = {""})
+    public ResponseResult<List<BeanData>> data()
     {
-        BeanData beanData = beanManager.get();
-        return ResponseResult.ok(beanData);
+        return ResponseResult.ok(beanManager.get());
     }
+
+
 }
