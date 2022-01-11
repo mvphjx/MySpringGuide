@@ -1,0 +1,2 @@
+# maven打包时间
+maven.package_time=@timestamp@
