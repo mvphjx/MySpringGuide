@@ -67,7 +67,7 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter
     @Override
     protected void configure(HttpSecurity http) throws Exception
     {
-        http.authorizeRequests().antMatchers("/login", "/logout","/actuator/**","/report/**","/v2/**","/swagger-resources").permitAll();
+        http.authorizeRequests().antMatchers("/login", "/logout","/actuator/**","/report/**","/v2/**","/swagger-resources","/css/**","/fonts/**","/image/**").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.formLogin().loginPage("/login").defaultSuccessUrl("/").and().logout()
                 .logoutSuccessHandler((req, resp, authentication) -> {
