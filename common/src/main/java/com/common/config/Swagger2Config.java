@@ -81,10 +81,17 @@ public class Swagger2Config
                     //自定义过滤策略
                     Class<?> aClass = input.declaringClass();
                     Api annotation = AnnotationUtil.getAnnotation(aClass, Api.class);
+                    ApiOperation apiOperation = input.findAnnotation(ApiOperation.class).orNull();
                     log.info("Api:" + annotation);
-                    ApiOperation apiOperation = input.findAnnotation(ApiOperation.class).get();
                     log.info("ApiOperation:" + apiOperation);
-                    return true;
+                    if (apiOperation != null)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }).apis(RequestHandlerSelectors.basePackage("com.common")).paths(PathSelectors.any());
         selectorBuilder.build();
         /**
@@ -102,6 +109,7 @@ public class Swagger2Config
 
     /**
      * 获取API的描述KEY，用来排序
+     *
      * @param model
      * @return
      */
