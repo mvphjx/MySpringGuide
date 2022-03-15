@@ -1,5 +1,27 @@
 # Getting Started
 
+## Project Structure 项目结构
+    src 项目源码
+        |___main 源码
+            |___java java源码
+                |___ctrl 前端请求层
+                |___data vo对象
+                |___biz 业务层
+                |___dao 数据持久层
+                |___model 持久化对象
+                |___config 框架配置
+                |___common/base 公共层
+                    |___constansts 常量
+                    |___covert 对象转化器
+                    |___enums 枚举
+                    |___utils 工具类
+            |___resources 资源文件
+                |___application Spring配置文件
+        |___test 模拟数据，便于调试
+            |___java 单元测试
+
+[Java应用结构规范](!https://developer.aliyun.com/article/876318)        
+        
 ### 业务概述
 - 用户角色管理（springdata）
 - 商品管理（mybatis-plus）

@@ -37,14 +37,14 @@ public class SeckillServiceImpl implements ISeckillService
     @Autowired
     private SeckillLogDao seckillLogDao;
     @Autowired
-    StringRedisTemplate redisTemplate;
+    private StringRedisTemplate redisTemplate;
 
     @Override
-    public long init()
+    public long mockData()
     {
-        if (dao.count() < 100000)
+        if (dao.count() < 10000)
         {
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 1000; i++)
             {
                 Seckill seckill = new Seckill();
                 seckill.setName(UUID.fastUUID().toString());
@@ -68,14 +68,13 @@ public class SeckillServiceImpl implements ISeckillService
         return dao.getById(seckillId);
     }
 
-    /* 加入一个盐值，用于混淆*/
-    private final String redisKey = "Seckill";
 
+    private final String REDIS_KEY = "Seckill";
     @Override
     public Exposer exportSeckillUrl(long seckillId)
     {
         Seckill seckill = dao.getById(seckillId);
-        redisTemplate.opsForHash().putIfAbsent(redisKey, seckill.getId() + "", seckill.getNumber() + "");
+        redisTemplate.opsForHash().putIfAbsent(REDIS_KEY, seckill.getId() + "", seckill.getNumber() + "");
         String md5 = getMd5(seckillId);
         return new Exposer(true, md5, seckillId);
     }
@@ -99,14 +98,14 @@ public class SeckillServiceImpl implements ISeckillService
         }
         try
         {
-            int count = Integer.parseInt(redisTemplate.opsForHash().entries(redisKey).get(seckillId + "") + "");
+            int count = Integer.parseInt(redisTemplate.opsForHash().entries(REDIS_KEY).get(seckillId + "") + "");
             if (count <= 0)
             {
                 throw new CustomException(HttpEnum.ERROR_400.code(), "库存没了");
             }
             // 重复秒杀 判定
             // 减库存 ，热点商品的竞争
-            redisTemplate.opsForHash().put(redisKey, seckillId + "", count-1 + "");
+            redisTemplate.opsForHash().put(REDIS_KEY, seckillId + "", count-1 + "");
             // 记录购买行为
             SeckillLog seckillLog = new SeckillLog();
             seckillLog.setSeckillId(seckillId);

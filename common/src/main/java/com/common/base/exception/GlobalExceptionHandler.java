@@ -15,7 +15,7 @@ import java.net.BindException;
 import java.util.List;
 
 /**
- * 处理异常
+ * 统一处理异常
  *
  * @author hjx
  * @version 1.0

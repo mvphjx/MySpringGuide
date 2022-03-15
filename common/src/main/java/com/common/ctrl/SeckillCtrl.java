@@ -28,11 +28,11 @@ public class SeckillCtrl
     @Autowired
     private ISeckillService service;
 
-    @ApiOperation(value = "初始化")
-    @GetMapping(path = { "/init" })
+    @ApiOperation(value = "初始化,模拟秒杀商品")
+    @GetMapping(path = { "/mock" })
     public ResponseResult<Long> init()
     {
-        return ResponseResult.ok(service.init());
+        return ResponseResult.ok(service.mockData());
     }
 
     @ApiOperation(value = "查看列表")

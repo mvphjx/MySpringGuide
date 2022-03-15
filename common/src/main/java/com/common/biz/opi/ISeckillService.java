@@ -17,7 +17,7 @@ public interface ISeckillService
      *
      * @return 初始化的数量
      */
-    long init();
+    long mockData();
 
     /**
      * 查询全部的秒杀记录.

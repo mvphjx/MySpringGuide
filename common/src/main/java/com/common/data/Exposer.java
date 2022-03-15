@@ -15,7 +15,7 @@ public class Exposer
     private boolean exposed;
     @ApiModelProperty(value = "对秒杀地址进行加密措施")
     private String md5;
-    @ApiModelProperty(value = "id为seckillId的商品秒杀地址")
+    @ApiModelProperty(value = "商品秒杀ID")
     private long seckillId;
     @ApiModelProperty(value = "系统当前的时间")
     private LocalDateTime now;
