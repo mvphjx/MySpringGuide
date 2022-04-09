@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.6</version>
+        <version>2.0.9.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
@@ -15,7 +15,8 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
-        <nacos-config-spring-boot.version>0.2.1</nacos-config-spring-boot.version>
+        <nacos-config-spring-boot.version>0.2.3</nacos-config-spring-boot.version>
+        <nacos-discovery-spring-boot.version>0.2.3</nacos-discovery-spring-boot.version>
     </properties>
     <dependencies>
         <dependency>
@@ -44,12 +45,17 @@
             <artifactId>nacos-config-spring-boot-starter</artifactId>
             <version>${nacos-config-spring-boot.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.alibaba.boot</groupId>
             <artifactId>nacos-config-spring-boot-actuator</artifactId>
             <version>${nacos-config-spring-boot.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.boot</groupId>
+            <artifactId>nacos-discovery-spring-boot-starter</artifactId>
+            <version>${nacos-discovery-spring-boot.version}</version>
+        </dependency>
+
 
     </dependencies>
 
@@ -69,5 +75,16 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>aliyun</id>
+            <name>aliyun Repository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
 </project>

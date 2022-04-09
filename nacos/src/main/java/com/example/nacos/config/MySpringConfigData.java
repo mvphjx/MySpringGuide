@@ -4,7 +4,7 @@ import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
 import lombok.Data;
 
 @Data
-public class MySpringConfig
+public class MySpringConfigData
 {
     private String LoginPage;
     private String jboss_ejb_client_prop;
