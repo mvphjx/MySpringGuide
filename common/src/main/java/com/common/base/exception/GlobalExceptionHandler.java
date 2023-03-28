@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.alibaba.fastjson.JSONObject;
 
+import javax.servlet.http.HttpServletRequest;
 import java.net.BindException;
 import java.util.List;
 
 /**
  * 统一处理异常
- *
+ * @RestControllerAdvice = @ControllerAdvice + @ResponseBody ，
+ * 如果有其他的异常需要处理，只需要定义@ExceptionHandler注解的方法处理即可。
  * @author hjx
  * @version 1.0
  * @date 2021/7/11 23:11
@@ -57,6 +59,20 @@ public class GlobalExceptionHandler
     public ResponseResult customExceptionHandLer(CustomException e)
     {
         return ResponseResult.failed(e.getCode(), e.getMsg());
+    }
+
+    /**
+     * 处理业务异常
+     *
+     * @param request 请求参数
+     * @param e       异常
+     * @return Result
+     */
+    @ExceptionHandler(value = BizException.class)
+    public Object bizExceptionHandler(HttpServletRequest request, BizException e)
+    {
+        log.warn("业务异常：" + e.getMessage(), e);
+        return ResponseResult.failed(e.getCode(), e.getMessage());
     }
 
     /**
