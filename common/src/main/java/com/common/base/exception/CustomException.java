@@ -5,6 +5,7 @@ import lombok.Data;
 
 /**
  * 自定义异常
+ *
  * @author hjx
  * @version 1.0
  * @date 2021/7/11 23:20
@@ -60,6 +61,18 @@ public class CustomException extends RuntimeException
     {
         super(message);
         this.code = code;
+    }
+
+    /**
+     * 使用错误码和错误信息构造 CustomException
+     *
+     * @param code    错误码
+     * @param message 错误信息
+     */
+    public CustomException(int code, String message)
+    {
+        super(message);
+        this.code = code + "";
     }
 
     /**
