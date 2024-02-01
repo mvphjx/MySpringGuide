@@ -42,6 +42,14 @@ public class UserCtrl
         return ResponseResult.ok(user);
     }
 
+    @ApiOperation(value = "获取最近创建的用户")
+    @GetMapping(path = { "/getLast" })
+    public ResponseResult getLastUser()
+    {
+        User user = userBiz.getLast();
+        return ResponseResult.ok(user);
+    }
+
     @ApiOperation(value = "获取全部用户")
     @GetMapping(path = { "", "/" })
     public ResponseResult data()

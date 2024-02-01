@@ -7,6 +7,10 @@ import com.common.dao.UserDao;
 import com.common.model.Role;
 import com.common.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -103,5 +107,27 @@ public class UserBiz implements UserDetailsService
 
         }
         return userDao.save(user).getId();
+    }
+
+    /**
+     * 查询最近创建的用户；使用SpringData自定义查询接口-findAll
+     *
+     * @return
+     */
+    public User getLast()
+    {
+        //查询条件
+        User user = new User();
+        user.setEnabled(true);
+        Example<User> example = Example.of(user);
+        //分页排序参数
+        PageRequest pageRequest = PageRequest.of(0, 1).withSort(Sort.by("id").descending());
+        Page<User> all = userDao.findAll(example, pageRequest);
+        long totalElements = all.getTotalElements();
+        if (totalElements == 0)
+        {
+            return null;
+        }
+        return all.getContent().get(0);
     }
 }
