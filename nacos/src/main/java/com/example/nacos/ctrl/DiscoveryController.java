@@ -4,6 +4,9 @@ import com.alibaba.nacos.api.annotation.NacosInjected;
 import com.alibaba.nacos.api.exception.NacosException;
 import com.alibaba.nacos.api.naming.NamingService;
 import com.alibaba.nacos.api.naming.pojo.Instance;
+import com.example.nacos.biz.NacosService;
+import com.example.nacos.config.NacosConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,24 +21,23 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class DiscoveryController
 {
 
-    @NacosInjected
-    private NamingService namingService;
+    @Autowired
+    private NacosService nacosService;
+    @Autowired
+    private NacosConfig config;
 
     @RequestMapping(value = "/get", method = GET)
     @ResponseBody
     public List<Instance> get(@RequestParam String serviceName) throws NacosException
     {
-        return namingService.getAllInstances(serviceName);
+        return nacosService.getService(serviceName);
     }
 
     @RequestMapping(value = "/register", method = GET)
     @ResponseBody
-    public String register() throws NacosException
+    public String register(String name, String version) throws NacosException
     {
-        Instance instance = new Instance();
-        instance.setPort(80);
-        instance.setIp("127.0.0.1");
-        namingService.registerInstance("MySpring", instance);
+        nacosService.registerService(name, version);
         return "ok";
     }
 }

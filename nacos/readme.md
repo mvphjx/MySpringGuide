@@ -1,4 +1,4 @@
-# Getting Started
+# nacos 配置中心&注册中心示例 
 
 ### 安装 nacos
 
@@ -22,23 +22,47 @@ Group:DEFAULT_GROUP
 
 
 
-### 启动服务获取配置
+### 配置读取
 
 - 服务配置
 
-http://127.0.0.1/nacos/1
+http://127.0.0.1/nacos/config/v
 
-http://127.0.0.1/nacos/2
-
-http://127.0.0.1/nacos/3
+### 服务注册
 
 - 服务注册
 
-http://127.0.0.1/nacos/discovery/register
+http://127.0.0.1/nacos/discovery/register?name=demo&version=0.0.2
 
 - 服务发现
 
-http://127.0.0.1/nacos/discovery/get?serviceName=MySpring
+http://127.0.0.1/nacos/discovery/get?serviceName=nacos
+
+### 监控
+
+- metrics数据
+
+    需要修改nacos服务器\conf\application.properties，开启endpoints
+
+http://127.0.0.1:8848/nacos/actuator/prometheus
+
+- prometheus
+
+http://localhost:9090/service-discovery
+
+
+prometheus.yml
+```
+scrape_configs:
+  - job_name: "prometheus"
+    metrics_path: "/nacos/actuator/prometheus"
+    static_configs:
+      - targets: ["localhost:8848"]
+```
+- grafana
+
+http://localhost:3000/
+
 
 
 
