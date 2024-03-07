@@ -29,3 +29,6 @@ Mybatis增强版，简单的增删改查，自动生成SQL
 ## 权限
 ### Spring Security
 Spring Security解决了应用程序通用的安全性需求，包括身份验证、授权和API安全性。
+## 微服务
+### Nacos
+服务注册中心、配置中心
