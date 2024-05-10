@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Bean容器数据展示
@@ -20,21 +24,28 @@ import java.util.List;
  * @version 1.0
  * @date 2021/7/11 22:12
  */
-@Api(tags = "Bean容器")
+@Api(tags = "Gateway测试")
 @RestController
-@RequestMapping("/bean")
+@RequestMapping("/gt")
 @Slf4j
-public class BeanCtrl
+public class GatewayCtrl
 {
     @Autowired
     private BeanManager beanManager;
 
-    @ApiOperation(value = "获取全部Bean")
-    @GetMapping(path = { "" })
-    public ResponseResult<List<BeanData>> data()
+    @ApiOperation(value = "获取header信息")
+    @GetMapping(path = { "/header" })
+    public Map header(HttpServletRequest request)
     {
-        log.info("获取全部Bean");
-        return ResponseResult.ok(beanManager.get());
+        Map msg = new HashMap();
+        msg.put("GatewayCtrl", System.currentTimeMillis());
+        Enumeration<String> headerNames = request.getHeaderNames();
+        while (headerNames.hasMoreElements())
+        {
+            String name = headerNames.nextElement();
+            msg.put(name, request.getHeader(name));
+        }
+        return msg;
     }
 
 }
