@@ -1,5 +1,5 @@
 server:
-  port: 8085
+  port: 9000
 spring:
   #配置静态资源
   mvc:

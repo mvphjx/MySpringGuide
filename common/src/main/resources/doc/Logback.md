@@ -2,11 +2,11 @@
 
 ### 架构
 
-- 接口层：facade
+- 接口层：facade,例如：Slf4j
 
 - 适配层：adapter
 
-- 实现层：
+- 实现层：Log4j/JUL/Logback/Log4j2
 
 
 
