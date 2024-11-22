@@ -16,7 +16,7 @@ Spring Batch解决的则是批处理集成的问题
 ### SpringMVC
 Spring的Web框架，编写控制器类以处理Web请求
 ### Spring WebFlux
-新反应式Web框架
+新响应式Web框架，响应式编程模型
 ## 持久化
 ### SpringData
 持久化框架，将应用程序的数据repository定义为简单的Java接口，在定义驱动存储和检索数据的方法时使用一种命名约定即可。
