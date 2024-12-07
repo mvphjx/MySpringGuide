@@ -12,32 +12,19 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
+  security:
+    #放开预览页面不需要登录
+    open-view-page: true
+    #登录账号和密码
+    user:
+      name: "admin"
+      password: "123456"
 #Minidao配置
-minidao :
-  base-package: org.jeecg.modules.jmreport.*
+minidao:
+  base-package: org.jeecg.modules.jmreport.*,org.jeecg.modules.drag.*
   #DB类型（mysql|postgresql|oracle|sqlserver|other）
   db-type: mysql
-#JimuReport[上传配置]
-jeecg :
-  # local|minio|alioss
-  uploadType: local
-  # local
-  path :
-    #文件路径
-    upload: /opt/upload
-  # alioss
-  oss:
-    endpoint: ??
-    accessKey: ??
-    secretKey: ??
-    bucketName: jimureport
-  # minio
-  minio:
-    minio_url: http://minio.jeecg.com
-    minio_name: ??
-    minio_pass: ??
-    bucketName: ??
 #输出sql日志
 logging:
   level:
-    org.jeecg.modules.jmreport : info
+    org.jeecg.modules.jmreport: debug
